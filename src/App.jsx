@@ -78,7 +78,7 @@ function App() {
             <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
             <HashLink smooth to="/#features" onClick={() => setMenuOpen(false)}>Features</HashLink>
             <Link to="/team" onClick={() => setMenuOpen(false)}>Team</Link>
-            <a href="https://kevov.github.io/claimrunner-eligibility-checker/" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Prototype</a>
+            <a href="https://kevov.github.io/claimrunner-eligibility-checker/" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Prototype???</a>
             <Link to="/small-claims-101" onClick={() => setMenuOpen(false)}>Small Claims 101</Link>
             <button
               className="login-link"
