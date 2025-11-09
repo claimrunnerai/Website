@@ -1,5 +1,5 @@
 // src/components/step7.jsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Step7 = ({ formData, updateFormData, setStepValid }) => {
   const [reasonText, setReasonText] = useState(formData.step7?.explanation || '');
@@ -7,7 +7,7 @@ const Step7 = ({ formData, updateFormData, setStepValid }) => {
   useEffect(() => {
     updateFormData('step7', { explanation: reasonText });
     setStepValid(reasonText.trim() !== '');
-  }, [reasonText]);
+  }, [reasonText, setStepValid, updateFormData]);
 
   return (
     <div className="step-body">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Team.scss';
 import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
@@ -9,9 +9,6 @@ import RuiqiImg from '../media/team/Ruiqi.jpeg';
 import KhoaImg from '../media/team/Khoa.jpeg';
 import SamridhImg from '../media/team/Samridh.jpeg';
 import NathanImg from '../media/team/Nathan.jpeg';
-
-// ---- Your Google Apps Script endpoint ----
-const CONTACT_URL = 'https://script.google.com/macros/s/AKfycbzpp9mNLOSxhbsgP5Ie8PUAxJ9eHggIbsH5Cgbze-ZZM0FH7RlgJWpRCm4BsZdfLPCU/exec';
 
 // Google Forms direct-post config
 const FORM_ACTION =
@@ -43,8 +40,6 @@ const secondRow = [
 export default function Team() {
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(null); // { type: 'ok'|'err', msg: string }
-  const [confirming, setConfirming] = useState(false);
-  const [sentPreview, setSentPreview] = useState('');
  const submitContact = async (e) => {
   e.preventDefault();
   const form = e.currentTarget;
@@ -148,7 +143,7 @@ export default function Team() {
             <span>Sign up for our email list for updates, promotions, and more.</span>
           </label>
 
-          <button type="submit" className="send-btn" disabled={sending || confirming}>
+          <button type="submit" className="send-btn" disabled={sending}>
             {sending ? 'SENDING…' : 'SEND'}
           </button>
 
@@ -160,12 +155,6 @@ export default function Team() {
               {status.msg}
             </div>
           )}
-          {sentPreview && (
-  <div className="sent-preview" role="status" aria-live="polite">
-    <strong>Message sent:</strong>
-    <div className="sent-text">{sentPreview}</div>
-  </div>
-)}
 
         </form>
       </div>

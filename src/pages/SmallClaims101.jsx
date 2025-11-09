@@ -35,7 +35,7 @@ export default function SmallClaims101() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  }, [go]);
 
   // basic swipe
   const touch = useRef({ x: 0, y: 0 });

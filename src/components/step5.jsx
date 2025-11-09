@@ -1,5 +1,5 @@
 // src/components/step5.jsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Step5 = ({ formData, updateFormData, setStepValid }) => {
   const [fields, setFields] = useState({
@@ -34,7 +34,7 @@ const Step5 = ({ formData, updateFormData, setStepValid }) => {
     const allFilled = requiredFields.every((key) => fields[key]?.trim() !== '');
     setStepValid(allFilled);
     updateFormData('step5', fields);
-  }, [fields]);
+  }, [fields, requiredFields, setStepValid, updateFormData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
