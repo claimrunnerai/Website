@@ -24,8 +24,8 @@ export default function SmallClaims101() {
   const [idx, setIdx] = useState(0);
   const total = steps.length;
 
-  const go = (n) => setIdx((p) => (p + n + total) % total);
-  const set = (n) => setIdx(n);
+  const go = React.useCallback((n) => setIdx((p) => (p + n + total) % total), [total]);
+  const set = React.useCallback((n) => setIdx(n), []);
 
   // keyboard arrows
   const goRef = useRef(go);

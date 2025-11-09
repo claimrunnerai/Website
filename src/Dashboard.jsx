@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Step1 from './components/step1';
 import Step2 from './components/step2';
 import Step3 from './components/step3';
@@ -50,7 +50,7 @@ const Dashboard = () => {
     }
   };
 
-  const updateFormData = (section, data) => {
+  const updateFormData = useCallback((section, data) => {
     setFormData(prev => ({
       ...prev,
       [section]: {
@@ -58,7 +58,7 @@ const Dashboard = () => {
         ...data,
       },
     }));
-  };
+  }, []);
 
   const handlePrev = () => {
     if (step > 1) {
@@ -88,7 +88,7 @@ const Dashboard = () => {
     } else if (!stepValid && completedSteps.includes(step)) {
       setCompletedSteps(prev => prev.filter(s => s !== step));
     }
-  }, [stepValid, step]);
+  }, [stepValid, step, completedSteps]);
 
   return (
     <div className="app-wrapper">

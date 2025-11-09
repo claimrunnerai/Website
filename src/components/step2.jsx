@@ -1,5 +1,5 @@
 // src/components/step2.jsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
 const checklistItems = [
   "I understand that the filing fee is $50.00 and will be required at the end of this interview to initiate the case with the court.",
@@ -12,7 +12,9 @@ const checklistItems = [
 ];
 
 const Step2 = ({ formData, updateFormData, setStepValid }) => {
-  const currentSelections = Array.isArray(formData.step2?.acknowledgments) ? formData.step2.acknowledgments : [];
+  const currentSelections = useMemo(() => (
+    Array.isArray(formData.step2?.acknowledgments) ? formData.step2.acknowledgments : []
+  ), [formData.step2]);
 
   useEffect(() => {
     const isComplete = checklistItems.every(item => currentSelections.includes(item));
@@ -45,7 +47,7 @@ const Step2 = ({ formData, updateFormData, setStepValid }) => {
               />{" "}
               {item.includes("Small Claims") ? (
                 <>
-                  {item.split(":")[0]}: <a href="#">Small Claims</a>.
+                  {item.split(":")[0]}: <a href="/small-claims" aria-label="Small Claims info">Small Claims</a>.
                 </>
               ) : (
                 item

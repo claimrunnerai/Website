@@ -13,8 +13,8 @@ const Step1 = () => {
         <p>
           <strong>More information</strong> on the Small Claims process is available on our website:
           <ul>
-            <li><a href="#">Small Claims</a></li>
-            <li><a href="#">How to Prepare, File and Serve a Claim</a></li>
+            <li><a href="/small-claims" aria-label="Small Claims information">Small Claims</a></li>
+            <li><a href="/how-to-file" aria-label="How to Prepare, File and Serve a Claim">How to Prepare, File and Serve a Claim</a></li>
           </ul>
         </p>
 
