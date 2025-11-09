@@ -1,6 +1,11 @@
 // src/components/step5.jsx
 import { useEffect, useState } from 'react';
 
+const requiredFields = [
+  'lastName', 'firstName', 'addressType', 'address1', 'zip',
+  'city', 'state', 'county', 'country', 'email', 'phoneType', 'phoneNumber'
+];
+
 const Step5 = ({ formData, updateFormData, setStepValid }) => {
   const [fields, setFields] = useState({
     companyName: '',
@@ -25,16 +30,12 @@ const Step5 = ({ formData, updateFormData, setStepValid }) => {
     ...formData.step5
   });
 
-  const requiredFields = [
-    'lastName', 'firstName', 'addressType', 'address1', 'zip',
-    'city', 'state', 'county', 'country', 'email', 'phoneType', 'phoneNumber'
-  ];
-
   useEffect(() => {
     const allFilled = requiredFields.every((key) => fields[key]?.trim() !== '');
     setStepValid(allFilled);
     updateFormData('step5', fields);
-  }, [fields, requiredFields, setStepValid, updateFormData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fields]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

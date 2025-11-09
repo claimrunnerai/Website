@@ -35,7 +35,8 @@ export default function SmallClaims101() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [go]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // basic swipe
   const touch = useRef({ x: 0, y: 0 });

@@ -7,7 +7,8 @@ const Step7 = ({ formData, updateFormData, setStepValid }) => {
   useEffect(() => {
     updateFormData('step7', { explanation: reasonText });
     setStepValid(reasonText.trim() !== '');
-  }, [reasonText, setStepValid, updateFormData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reasonText]);
 
   return (
     <div className="step-body">

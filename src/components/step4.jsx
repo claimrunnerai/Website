@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 const Step4 = ({ formData, updateFormData, setStepValid }) => {
-  const caseInfo = formData.step4 || {};
+  const caseInfo = useMemo(() => formData.step4 || {}, [formData.step4]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
