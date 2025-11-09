@@ -28,14 +28,16 @@ export default function SmallClaims101() {
   const set = (n) => setIdx(n);
 
   // keyboard arrows
+  const goRef = useRef(go);
+  useEffect(() => { goRef.current = go; }, [go]);
+
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'ArrowRight') go(1);
-      if (e.key === 'ArrowLeft') go(-1);
+      if (e.key === 'ArrowRight') goRef.current(1);
+      if (e.key === 'ArrowLeft') goRef.current(-1);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // basic swipe

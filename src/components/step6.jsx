@@ -1,5 +1,5 @@
 // src/components/step6.jsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 
 // ✅ Only the following fields are required
 const requiredFields = [
@@ -29,12 +29,16 @@ const Step6 = ({ formData, updateFormData, setStepValid }) => {
     ...formData.step6,
   });
 
+  // Memoize required field keys to a stable ref
+  const req = useMemo(() => requiredFields, []);
+  const pushUpdate = useCallback((payload) => updateFormData('step6', payload), [updateFormData]);
+  const markValid = useCallback((v) => setStepValid(v), [setStepValid]);
+
   useEffect(() => {
-    const allValid = requiredFields.every((key) => fields[key]?.trim() !== '');
-    setStepValid(allValid);
-    updateFormData('step6', fields);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fields]);
+    const allValid = req.every((key) => (fields[key] ?? '').toString().trim() !== '');
+    markValid(allValid);
+    pushUpdate(fields);
+  }, [fields, req, pushUpdate, markValid]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

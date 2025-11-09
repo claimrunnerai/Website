@@ -1,5 +1,5 @@
 // src/components/step5.jsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 
 const requiredFields = [
   'lastName', 'firstName', 'addressType', 'address1', 'zip',
@@ -30,12 +30,18 @@ const Step5 = ({ formData, updateFormData, setStepValid }) => {
     ...formData.step5
   });
 
+  // Memoize required fields array (stable reference)
+  const req = useMemo(() => requiredFields, []);
+
+  // Stable wrappers to avoid changing deps frequently
+  const pushUpdate = useCallback((payload) => updateFormData('step5', payload), [updateFormData]);
+  const markValid = useCallback((v) => setStepValid(v), [setStepValid]);
+
   useEffect(() => {
-    const allFilled = requiredFields.every((key) => fields[key]?.trim() !== '');
-    setStepValid(allFilled);
-    updateFormData('step5', fields);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fields]);
+    const allFilled = req.every((key) => (fields[key] ?? '').toString().trim() !== '');
+    markValid(allFilled);
+    pushUpdate(fields);
+  }, [fields, req, markValid, pushUpdate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

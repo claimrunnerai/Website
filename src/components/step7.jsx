@@ -1,14 +1,16 @@
 // src/components/step7.jsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 const Step7 = ({ formData, updateFormData, setStepValid }) => {
   const [reasonText, setReasonText] = useState(formData.step7?.explanation || '');
 
+  const pushUpdate = useCallback((payload) => updateFormData('step7', payload), [updateFormData]);
+  const markValid = useCallback((v) => setStepValid(v), [setStepValid]);
+
   useEffect(() => {
-    updateFormData('step7', { explanation: reasonText });
-    setStepValid(reasonText.trim() !== '');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reasonText]);
+    pushUpdate({ explanation: reasonText });
+    markValid(reasonText.trim() !== '');
+  }, [reasonText, pushUpdate, markValid]);
 
   return (
     <div className="step-body">
