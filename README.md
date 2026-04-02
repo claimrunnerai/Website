@@ -26,23 +26,6 @@ npm start
 
 - http://localhost:3000
 
-## Available Scripts
 
-- `npm start` — start the dev server
-- `npm test` — run tests
-- `npm run build` — create a production build
-- `npm run eject` — eject from Create React App
-- `npm run deploy` — deploy built app with `gh-pages`
-
-## Deployment
-
-The repository uses `gh-pages` for deployment.
-
-```bash
 npm run deploy
-```
-
-The published site should be available at:
-
-- https://rakkshanda.github.io/claimrunner.ai/
 
