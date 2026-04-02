@@ -1,6 +1,5 @@
 # ClaimRunner AI
 
-A React app built with Create React App.
 
 ## Local Setup
 
