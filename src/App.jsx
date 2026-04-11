@@ -14,6 +14,7 @@ import ComingSoon from './pages/ComingSoon';
 import TermsOfService from './pages/TermsOfService';
 import ScrollToTop from './pages/ScrollToTop';
 import Footer from './pages/Footer';
+import Prototype from './pages/Prototype';
 
 import logo from './media/logo.png';
 
@@ -32,6 +33,7 @@ function RouteTransitions() {
         <Route path="/small-claims-101" element={<Page><SmallClaims101 /></Page>} />
         <Route path="/coming-soon"      element={<Page><ComingSoon /></Page>} />
         <Route path="/terms-of-service" element={<Page><TermsOfService /></Page>} />
+        <Route path="/prototype"        element={<Page><Prototype /></Page>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </AnimatePresence>
@@ -78,7 +80,8 @@ function App() {
             <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
             <HashLink smooth to="/#features" onClick={() => setMenuOpen(false)}>Features</HashLink>
             <Link to="/team" onClick={() => setMenuOpen(false)}>Team</Link>
-            <a href="https://kevov.github.io/claimrunner-eligibility-checker/" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Prototype</a>
+            <a href="https://kevov.github.io/claimrunner-eligibility-checker/" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Eligibility</a>
+            <Link to="/prototype" onClick={() => setMenuOpen(false)}>Prototype</Link>
             <Link to="/small-claims-101" onClick={() => setMenuOpen(false)}>Small Claims 101</Link>
             <button
               className="login-link"
