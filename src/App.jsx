@@ -5,6 +5,7 @@ import { HashRouter as Router, Routes, Route, Link, Navigate } from 'react-route
 import { HashLink } from 'react-router-hash-link';
 import { AnimatePresence,motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 
 import Home from './pages/Home';
 import Team from './pages/Team';
@@ -109,6 +110,7 @@ function App() {
           </div>
         </div>
       )}
+      <Analytics />
     </Router>
   );
 }
