@@ -8,7 +8,7 @@ import ColeImg from '../media/team/Cole.jpeg';
 import RuiqiImg from '../media/team/Ruiqi.jpeg';
 import KhoaImg from '../media/team/Khoa.jpeg';
 import SamridhImg from '../media/team/Samridh.jpeg';
-import NathanImg from '../media/team/Nathan.jpeg';
+import NathanImg from '../media/team/nat2.png';
 
 // Google Forms direct-post config
 const FORM_ACTION =
@@ -25,14 +25,15 @@ const ENTRY = {
 
 
 const firstRow = [
-  { name: 'Sam Mata', img: SamImg, linkedin: 'https://www.linkedin.com/in/sam-mata-3048108b/', email: 'sam@claimrunner.ai' },
-  { name: 'Nathan Lee', img: NathanImg, linkedin: 'https://www.linkedin.com/in/nathanleeuw/', email: 'nathanlee00873@gmail.com' },
-  { name: 'Ruiqi Wei', img: RuiqiImg, linkedin: 'https://www.linkedin.com/in/ruiqiwei/', email: 'ruwei@uw.edu' }
+  // { name: 'Sam Mata', img: SamImg, linkedin: 'https://www.linkedin.com/in/sam-mata-3048108b/', email: 'sam@claimrunner.ai' },
+  // { name: 'Nathan Lee', img: NathanImg, linkedin: 'https://www.linkedin.com/in/nathanleeuw/', email: 'nathanlee00873@gmail.com' },
+  // { name: 'Ruiqi Wei', img: RuiqiImg, linkedin: 'https://www.linkedin.com/in/ruiqiwei/', email: 'ruwei@uw.edu' }
+ { name: 'Nathan Lee', img: NathanImg, linkedin: 'https://www.linkedin.com/in/nathanleeuw/', email: 'nathanlee00873@gmail.com' },
+  { name: 'Cole DuBois', img: ColeImg, linkedin: 'https://www.linkedin.com/in/coledubois/', email: 'contactcole@gmail.com' },
+  { name: 'Rakshanda', img: RakshandaImg, linkedin: 'https://www.linkedin.com/in/rakkshanda/', email: 'rakkshanda.b@gmail.com' },
 ];
 
 const secondRow = [
-  { name: 'Cole DuBois', img: ColeImg, linkedin: 'https://www.linkedin.com/in/coledubois/', email: 'contactcole@gmail.com' },
-  { name: 'Rakshanda', img: RakshandaImg, linkedin: 'https://www.linkedin.com/in/rakkshanda/', email: 'rakkshanda.b@gmail.com' },
   { name: 'Khoa Luong', img: KhoaImg, linkedin: 'https://www.linkedin.com/in/khoaluong99/', email: 'khoal@uw.edu' },
   { name: 'Samridh B.', img: SamridhImg, linkedin: 'https://www.linkedin.com/in/samridhb/', email: 'samridhb@gmail.com' }
 ];
@@ -103,9 +104,8 @@ export default function Team() {
           </article>
         ))}
       </div>
-
-      {/* Second Row */}
-      <div className="team-row four-cols">
+        {/* First Row */}
+      <div className="team-row three-cols">
         {secondRow.map(({ name, img, linkedin, email }) => (
           <article key={name} className="card">
             <img src={img} alt={`${name} headshot`} loading="lazy" />
@@ -121,6 +121,7 @@ export default function Team() {
           </article>
         ))}
       </div>
+
 
       {/* Contact Us Card */}
       <div className="contact-card" role="form" aria-labelledby="contact-title">

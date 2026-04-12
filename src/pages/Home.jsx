@@ -1,10 +1,69 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import './Home.scss';
 import heroImage from '../media/homep.png';
 import missionImage from '../media/mission.svg';
+import { saveNewsletterSignup } from '../services/supabase';
 
 function Home() {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isDuplicate, setIsDuplicate] = useState(false);
+
+  const handleFormChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    setIsDuplicate(false);
+
+    try {
+      console.log('Submitting form with data:', formData);
+      
+      // Save to Supabase
+      const result = await saveNewsletterSignup(
+        formData.firstName,
+        formData.lastName,
+        formData.email,
+        formData.company
+      );
+
+      console.log('Result from Supabase:', result);
+
+      if (result.success) {
+        setSubmitted(true);
+        setLoading(false);
+      } else if (result.alreadyExists) {
+        // Email already exists - show success message with different text
+        setSubmitted(true);
+        setIsDuplicate(true);
+        setLoading(false);
+      } else {
+        setError(result.error?.message || 'Failed to save signup. Please try again.');
+        setLoading(false);
+        console.error('Signup failed:', result.error);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setError(error.message || 'An error occurred. Please try again.');
+      setLoading(false);
+    }
+  };
 
   const features = [
     {
@@ -126,6 +185,96 @@ function Home() {
           accessible.
         </p>
         <img src={missionImage} alt="Mission illustration" className="mission__icon" />
+      </section>
+
+      {/* Signup Form */}
+      <section className="signup" id="signup" aria-labelledby="signup-title">
+        <div className="signup__container">
+          <header className="signup__header">
+            <h2 id="signup-title" className="signup__title">Sign Up for Our Newsletter!</h2>
+          </header>
+
+          {submitted ? (
+            <div className="signup__success">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="16 9 10 15 8 13"></polyline>
+              </svg>
+              <p>{isDuplicate ? 'You have already signed up! Stay tuned.' : "You're all set! Thanks for signing up."}</p>
+            </div>
+          ) : (
+            <form className="signup__form" onSubmit={handleFormSubmit}>
+              {error && (
+                <div className="signup__error">
+                  <p>{error}</p>
+                </div>
+              )}
+              <div className="signup__row">
+                <div className="signup__field">
+                  <label htmlFor="firstName" className="signup__label">First Name</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="First Name"
+                    value={formData.firstName}
+                    onChange={handleFormChange}
+                    className="signup__input"
+                    required
+                  />
+                </div>
+                <div className="signup__field">
+                  <label htmlFor="lastName" className="signup__label">Last Name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Last Name"
+                    value={formData.lastName}
+                    onChange={handleFormChange}
+                    className="signup__input"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="signup__field">
+                <label htmlFor="email" className="signup__label">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleFormChange}
+                  className="signup__input"
+                  required
+                />
+              </div>
+
+              <div className="signup__field">
+                <label htmlFor="company" className="signup__label">Company</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="Company"
+                  value={formData.company}
+                  onChange={handleFormChange}
+                  className="signup__input"
+                />
+              </div>
+
+              <button 
+                type="submit" 
+                className="signup__button"
+                disabled={loading}
+              >
+                {loading ? 'Signing Up...' : 'Sign Me Up'}
+              </button>
+            </form>
+          )}
+        </div>
       </section>
     </main>
   );

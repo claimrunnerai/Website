@@ -83,12 +83,14 @@ function App() {
             <a href="https://kevov.github.io/claimrunner-eligibility-checker/" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Eligibility</a>
             <Link to="/prototype" onClick={() => setMenuOpen(false)}>Prototype</Link>
             <Link to="/small-claims-101" onClick={() => setMenuOpen(false)}>Small Claims 101</Link>
-            <button
+            <HashLink 
+              smooth 
+              to="/#signup" 
               className="login-link"
-              onClick={() => { setMenuOpen(false); setShowModal(true); }}
+              onClick={() => setMenuOpen(false)}
             >
-              Login
-            </button>
+              Sign up
+            </HashLink>
           </nav>
         </header>
 
