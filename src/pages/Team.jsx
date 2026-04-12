@@ -3,9 +3,9 @@ import './Team.scss';
 import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 import RakshandaImg from '../media/team/Rakshanda.jpeg';
-import SamImg from '../media/team/Sam.jpeg';
+// import SamImg from '../media/team/Sam.jpeg';
 import ColeImg from '../media/team/Cole.jpeg';
-import RuiqiImg from '../media/team/Ruiqi.jpeg';
+// import RuiqiImg from '../media/team/Ruiqi.jpeg';
 import KhoaImg from '../media/team/Khoa.jpeg';
 import SamridhImg from '../media/team/Samridh.jpeg';
 import NathanImg from '../media/team/nat2.png';
