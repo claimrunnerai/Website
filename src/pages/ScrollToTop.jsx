@@ -5,8 +5,8 @@ function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // Don’t scroll if we’re intentionally jumping to #features
-    if (hash === '#features') return;
+    // Let hash-based navigation manage its own scroll target.
+    if (hash) return;
 
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname, hash]);

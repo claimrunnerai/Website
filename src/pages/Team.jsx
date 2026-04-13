@@ -9,6 +9,7 @@ import ColeImg from '../media/team/Cole.jpeg';
 import KhoaImg from '../media/team/Khoa.jpeg';
 import SamridhImg from '../media/team/Samridh.jpeg';
 import NathanImg from '../media/team/nat2.png';
+import AnjaliImg from '../media/team/anjali.png';
 
 // Google Forms direct-post config
 const FORM_ACTION =
@@ -35,7 +36,8 @@ const firstRow = [
 
 const secondRow = [
   { name: 'Khoa Luong', img: KhoaImg, linkedin: 'https://www.linkedin.com/in/khoaluong99/', email: 'khoal@uw.edu' },
-  { name: 'Samridh B.', img: SamridhImg, linkedin: 'https://www.linkedin.com/in/samridhb/', email: 'samridhb@gmail.com' }
+  { name: 'Samridh B.', img: SamridhImg, linkedin: 'https://www.linkedin.com/in/samridhb/', email: 'samridhb@gmail.com' },
+  { name: 'Anjali', img: AnjaliImg, linkedin: 'https://www.linkedin.com/in/anjali-abhilash/', email: 'aabhil@uw.edu' }
 ];
 
 export default function Team() {
