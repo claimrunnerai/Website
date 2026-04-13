@@ -2,11 +2,11 @@ import { useState } from 'react';
 import './Team.scss';
 import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
-import RakshandaImg from '../media/team/Rakshanda.jpeg';
+import RakshandaImg from '../media/team/raks.png';
 // import SamImg from '../media/team/Sam.jpeg';
 import ColeImg from '../media/team/Cole.jpeg';
 // import RuiqiImg from '../media/team/Ruiqi.jpeg';
-import KhoaImg from '../media/team/Khoa.jpeg';
+import KhoaImg from '../media/team/khoa.png';
 import SamridhImg from '../media/team/Samridh.jpeg';
 import NathanImg from '../media/team/nat2.png';
 import AnjaliImg from '../media/team/anjali.png';
